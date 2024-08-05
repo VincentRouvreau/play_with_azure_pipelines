@@ -1,0 +1,26 @@
+jobs:
+  
+  - job: 'OSx'
+    displayName: "Build and test OSx"
+    pool:
+      vmImage: macOS-latest
+    variables:
+      pythonVersion: '3.9'
+
+    steps:
+    # Use a specific Python version
+    - task: UsePythonVersion@0
+      displayName: Use Python $(pythonVersion)
+      inputs:
+        versionSpec: $(pythonVersion)
+        addToPath: true
+        architecture: 'x64'
+
+    - bash: |
+        python --version
+        which python
+        mkdir build
+        cd build
+        cmake ..
+        cmake -DPython_EXECUTABLE=$(which python) ..
+      displayName: 'Install build dependencies'
