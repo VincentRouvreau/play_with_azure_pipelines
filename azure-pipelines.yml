@@ -22,7 +22,7 @@ jobs:
         mkdir build
         cd build
         cmake ..
-        echo "pouet"
+        echo "pouet $(which python)"
         cmake -DPython_EXECUTABLE=$(which python) ..
       displayName: 'Build and test'
 
@@ -52,6 +52,6 @@ jobs:
         cd ..
         mkdir where
         cd where
-        echo "pouet"
+        echo pouet $(where python)
         cmake -DPython_EXECUTABLE="$(where python)" ..
       displayName: 'Build and test'
