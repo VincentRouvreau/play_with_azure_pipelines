@@ -24,7 +24,7 @@ jobs:
         cmake ..
         echo "pouet"
         cmake -DPython_EXECUTABLE=$(which python) ..
-      displayName: 'Install build dependencies'
+      displayName: 'Build and test'
 
   - job: 'Windows'
     displayName: "Build and test Windows"
@@ -49,6 +49,9 @@ jobs:
         mkdir build
         cd build
         cmake ..
+        cd ..
+        mkdir where
+        cd where
         echo "pouet"
         cmake -DPython_EXECUTABLE="$(where python)" ..
       displayName: 'Build and test'
