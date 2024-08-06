@@ -50,8 +50,8 @@ jobs:
         cd build
         cmake ..
         cd ..
-        mkdir where
-        cd where
-        echo pouet $(where python)
-        cmake -DPython_EXECUTABLE="$(where python)" ..
+        mkdir pyexe
+        cd pyexe
+        Write-Output pouet $((Get-Command python).Path)
+        cmake -DPython_EXECUTABLE=$((Get-Command python).Path) ..
       displayName: 'Build and test'
