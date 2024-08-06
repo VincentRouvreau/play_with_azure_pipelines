@@ -52,6 +52,7 @@ jobs:
         cd ..
         mkdir pyexe
         cd pyexe
-        Write-Output pouet $((Get-Command python).Path)
-        cmake -DPython_EXECUTABLE=$((Get-Command python).Path) ..
+        FOR /F %i IN ('where python') DO set PYTHON_EXE=%i
+        echo %PYTHON_EXE%
+        cmake -DPython_EXECUTABLE=%PYTHON_EXE% ..
       displayName: 'Build and test'
