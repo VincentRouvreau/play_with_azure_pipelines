@@ -50,8 +50,8 @@ jobs:
         cd build
         cmake ..
         cd ..
-        mkdir pyexe
-        cd pyexe
+        mkdir setpyexe
+        cd setpyexe
         for /f %%i in ('where python') do set PYTHON_EXE=%%i
         echo %PYTHON_EXE%
         cmake -DPython_EXECUTABLE=%PYTHON_EXE% ..
