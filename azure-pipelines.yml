@@ -52,7 +52,7 @@ jobs:
         cd ..
         mkdir pyexe
         cd pyexe
-        FOR /F %i IN ('where python') DO set PYTHON_EXE=%i
+        for /f %%i in ('where python') do set PYTHON_EXE=%%i
         echo %PYTHON_EXE%
         cmake -DPython_EXECUTABLE=%PYTHON_EXE% ..
       displayName: 'Build and test'
