@@ -1,58 +1,58 @@
 jobs:
-  
-  - job: 'OSx'
+  - job: "OSx"
     displayName: "Build and test OSx"
     pool:
       vmImage: macOS-latest
     variables:
-      pythonVersion: '3.9'
+      pythonVersion: "3.9"
 
     steps:
-    # Use a specific Python version
-    - task: UsePythonVersion@0
-      displayName: Use Python $(pythonVersion)
-      inputs:
-        versionSpec: $(pythonVersion)
-        addToPath: true
-        architecture: 'x64'
+      # Use a specific Python version
+      - task: UsePythonVersion@0
+        displayName: Use Python $(pythonVersion)
+        inputs:
+          versionSpec: $(pythonVersion)
+          addToPath: true
+          architecture: "x64"
 
-    - bash: |
-        python --version
-        which python
-        mkdir build
-        cd build
-        cmake ..
-        echo "pouet $(which python)"
-        cmake -DPython_EXECUTABLE=$(which python) ..
-      displayName: 'Build and test'
+      - bash: |
+          python --version
+          which python
+          mkdir build
+          cd build
+          cmake ..
+          echo "pouet $(which python)"
+          cmake -DPython_EXECUTABLE=$(which python) ..
+        displayName: "Build and test"
 
-  - job: 'Windows'
+  - job: "Windows"
     displayName: "Build and test Windows"
     pool:
       vmImage: windows-latest
     variables:
-      pythonVersion: '3.9'
+      pythonVersion: "3.9"
 
     steps:
-    # Use a specific Python version
-    - task: UsePythonVersion@0
-      displayName: Use Python $(pythonVersion)
-      inputs:
-        versionSpec: $(pythonVersion)
-        addToPath: true
-        architecture: 'x64'
+      # Use a specific Python version
+      - task: UsePythonVersion@0
+        displayName: Use Python $(pythonVersion)
+        inputs:
+          versionSpec: $(pythonVersion)
+          addToPath: true
+          architecture: "x64"
 
-    - script: |
-        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-        python --version
-        where python
-        mkdir build
-        cd build
-        cmake ..
-        cd ..
-        mkdir setpyexe
-        cd setpyexe
-        for /f %%i in ('where python') do set PYTHON_EXE=%%i
-        echo %PYTHON_EXE%
-        cmake -DPython_EXECUTABLE=%PYTHON_EXE% ..
-      displayName: 'Build and test'
+      - script: |
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          python --version
+          where python
+          mkdir build
+          cd build
+          cmake ..
+          cd ..
+          mkdir setpyexe
+          cd setpyexe
+          for /f %%i in ('where python') do echo %%i
+          for /f %%i in ('where python') do set PYTHON_EXE=%%i
+          echo %PYTHON_EXE%
+          cmake -DPython_EXECUTABLE=%PYTHON_EXE% ..
+        displayName: "Build and test"
