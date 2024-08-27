@@ -52,7 +52,8 @@ jobs:
           mkdir setpyexe
           cd setpyexe
           for /f %%i in ('where python') do echo %%i
-          for /f %%i in ('where python') do set PYTHON_EXE=%%i
+          for /f %%i in ('where python') do (set PYTHON_EXE=%%i & goto :next)
+          :next
           echo %PYTHON_EXE%
           cmake -DPython_EXECUTABLE=%PYTHON_EXE% ..
         displayName: "Build and test"
