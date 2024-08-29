@@ -30,12 +30,12 @@ jobs:
           echo "last"
           mkdir last
           cd last
-          cmake -DPython_FIND_REGISTRY=LAST ..
+          cmake -DPython_FIND_FRAMEWORK=LAST ..
           cd ..
           echo "never"
           mkdir never
           cd never
-          cmake -DPython_FIND_REGISTRY=NEVER ..
+          cmake -DPython_FIND_FRAMEWORK=NEVER ..
         displayName: "Build and test"
 
   - job: "Windows"
