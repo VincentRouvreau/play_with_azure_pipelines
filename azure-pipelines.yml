@@ -31,6 +31,11 @@ jobs:
           mkdir last
           cd last
           cmake -DPython_FIND_REGISTRY=LAST ..
+          cd ..
+          echo "never"
+          mkdir never
+          cd never
+          cmake -DPython_FIND_REGISTRY=NEVER ..
         displayName: "Build and test"
 
   - job: "Windows"
@@ -66,7 +71,13 @@ jobs:
           echo %PYTHON_EXE%
           cmake -DPython_EXECUTABLE=%PYTHON_EXE% ..
           echo "last"
+          cd ..
           mkdir last
           cd last
           cmake -DPython_FIND_REGISTRY=LAST ..
+          cd ..
+          echo "never"
+          mkdir never
+          cd never
+          cmake -DPython_FIND_REGISTRY=NEVER ..
         displayName: "Build and test"
