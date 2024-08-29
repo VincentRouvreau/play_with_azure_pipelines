@@ -21,8 +21,16 @@ jobs:
           mkdir build
           cd build
           cmake ..
-          echo "pouet $(which python)"
+          cd ..
+          mkdir setpyexe
+          cd setpyexe
+          echo "setpyexe $(which python)"
           cmake -DPython_EXECUTABLE=$(which python) ..
+          cd ..
+          echo "last"
+          mkdir last
+          cd last
+          cmake -DPython_FIND_REGISTRY=LAST ..
         displayName: "Build and test"
 
   - job: "Windows"
@@ -49,6 +57,7 @@ jobs:
           cd build
           cmake ..
           cd ..
+          echo "pyexe"
           mkdir setpyexe
           cd setpyexe
           for /f %%i in ('where python') do echo %%i
@@ -56,4 +65,8 @@ jobs:
           :next
           echo %PYTHON_EXE%
           cmake -DPython_EXECUTABLE=%PYTHON_EXE% ..
+          echo "last"
+          mkdir last
+          cd last
+          cmake -DPython_FIND_REGISTRY=LAST ..
         displayName: "Build and test"
