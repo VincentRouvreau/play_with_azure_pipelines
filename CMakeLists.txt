@@ -3,3 +3,8 @@ cmake_minimum_required(VERSION 3.15)
 project(PlayWithAzurePipelines)
 
 find_package( Python COMPONENTS Interpreter)
+
+message("CMAKE_CURRENT_SOURCE_DIR = ${CMAKE_CURRENT_SOURCE_DIR}")
+message("CMAKE_CURRENT_BINARY_DIR = ${CMAKE_CURRENT_BINARY_DIR}")
+
+file(CREATE_LINK ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE POUET SYMBOLIC)
