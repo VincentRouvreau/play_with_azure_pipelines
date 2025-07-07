@@ -5,6 +5,7 @@ jobs:
       vmImage: windows-latest
     variables:
       pythonVersion: "3.9"
+      cmakeBuildType: Release
 
     steps:
       # Use a specific Python version
@@ -25,6 +26,7 @@ jobs:
           where python
           mkdir build
           cd build
-          cmake -DPython_FIND_REGISTRY=LAST ..
+          Write-Host "$(cmakeBuildType)"
+          cmake -DCMAKE_BUILD_TYPE:STRING=$(cmakeBuildType) -DPython_FIND_REGISTRY=LAST ..
           dir
         displayName: "Build and test"
