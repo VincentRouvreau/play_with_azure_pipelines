@@ -26,7 +26,8 @@ jobs:
           where python
           mkdir build
           cd build
-          Write-Host "$(cmakeBuildType)"
+          Write-Host "CMAKE_BUILD_TYPE == $(cmakeBuildType)"
+          Write-Host "CMAKE_BUILD_TYPE == $Env:cmakeBuildType"
           cmake -DCMAKE_BUILD_TYPE:STRING=$(cmakeBuildType) -DPython_FIND_REGISTRY=LAST ..
           dir
         displayName: "Build and test"
