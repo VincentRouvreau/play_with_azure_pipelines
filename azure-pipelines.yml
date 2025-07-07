@@ -26,6 +26,5 @@ jobs:
           mkdir build
           cd build
           cmake -DPython_FIND_REGISTRY=LAST ..
-          whoami -xyzzy
           dir
         displayName: "Build and test"
