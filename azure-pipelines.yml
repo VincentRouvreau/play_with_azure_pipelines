@@ -2,7 +2,7 @@ jobs:
   - job: "Windows"
     displayName: "Build and test Windows"
     pool:
-      vmImage: windows-latest
+      vmImage: windows-2025
     variables:
       pythonVersion: "3.9"
       cmakeBuildType: Release
