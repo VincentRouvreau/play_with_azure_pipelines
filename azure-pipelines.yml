@@ -25,7 +25,6 @@ jobs:
           $PSVersionTable
           python --version
           where python
-          whoami -xyzzy
           mkdir build
           cd build
           Write-Host "CMAKE_BUILD_TYPE == $(cmakeBuildType)"
