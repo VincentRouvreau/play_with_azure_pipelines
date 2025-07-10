@@ -22,6 +22,7 @@ jobs:
           filename: 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat'
           modifyEnvironment: true
       - powershell: |
+          $PSVersionTable
           python --version
           where python
           mkdir build
