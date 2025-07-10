@@ -2,7 +2,7 @@ jobs:
   - job: "Windows"
     displayName: "Build and test Windows"
     pool:
-      vmImage: windows-2025
+      vmImage: windows-latest
     variables:
       pythonVersion: "3.9"
       cmakeBuildType: Release
@@ -23,8 +23,11 @@ jobs:
           modifyEnvironment: true
       - powershell: |
           $PSVersionTable
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
           python --version
           where python
+          whoami -xyzzy
           mkdir build
           cd build
           Write-Host "CMAKE_BUILD_TYPE == $(cmakeBuildType)"
