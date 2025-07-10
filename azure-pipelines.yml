@@ -21,7 +21,6 @@ jobs:
           modifyEnvironment: true
       - powershell: |
           $PSVersionTable
-          $ErrorActionPreference = 'Stop'
           $PSNativeCommandUseErrorActionPreference = $true
           python --version
           where python
@@ -34,4 +33,3 @@ jobs:
           dir
         displayName: "Build and test"
         errorActionPreference: "stop"
-        PSNativeCommandUseErrorActionPreference: true
