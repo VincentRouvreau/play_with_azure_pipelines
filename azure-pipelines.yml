@@ -35,10 +35,10 @@ jobs:
         errorActionPreference: "stop"
       - pwsh: |
           $PSVersionTable
+          dir
         displayName: "pwsh"
       - task: PowerShell@2
         inputs:
           targetType: "inline"
-          script: |
-            $PSVersionTable
-        displayName: "PowerShell@2"
+          script: $PSVersionTable
+        displayName: "PowerShell v2"
