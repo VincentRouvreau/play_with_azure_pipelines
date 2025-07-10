@@ -19,9 +19,10 @@ jobs:
         inputs:
           filename: 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat'
           modifyEnvironment: true
-      - powershell: |
-          $PSVersionTable
+      - pwsh: |
+          $ErrorActionPreference = "stop"
           $PSNativeCommandUseErrorActionPreference = $true
+          $PSVersionTable
           python --version
           where python
           whoami -xyzzy
@@ -32,13 +33,3 @@ jobs:
           cmake -DCMAKE_BUILD_TYPE:STRING=$(cmakeBuildType) -DPython_FIND_REGISTRY=LAST ..
           dir
         displayName: "Build and test"
-        errorActionPreference: "stop"
-      - pwsh: |
-          $PSVersionTable
-          dir
-        displayName: "pwsh"
-      - task: PowerShell@2
-        inputs:
-          targetType: "inline"
-          script: $PSVersionTable
-        displayName: "PowerShell v2"
